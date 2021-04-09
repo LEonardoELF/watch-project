@@ -17,6 +17,7 @@ public class WatchProjectApplication {
 		SpringApplication.run(WatchProjectApplication.class, args);
 
 		WatchService watchService = FileSystems.getDefault().newWatchService();
+
 		String appHomePath=System.getProperty("user.dir");
 		File watchDir=new File(appHomePath+"\\watchDir");
 		if(!watchDir.exists()) {
@@ -24,7 +25,7 @@ public class WatchProjectApplication {
         }
 		Path path = Paths.get(appHomePath+"\\watchDir");
 
-		System.out.println(path.getFileName());
+
 		//будем следить за созданием, изменение и удалением файлов.
 		path.register(watchService, ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE);
 		boolean poll = true;
