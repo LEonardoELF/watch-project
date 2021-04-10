@@ -29,14 +29,17 @@ public class FileWatcherTest {
         assertEquals(1, watcher.getListeners().size());
         wait(2000);
         File file = new File(folder + "/test.txt");
-        System.out.println(file.getAbsolutePath());
+        //File file2 = new File(folder + "/test2.txt");
+        //System.out.println(file.getAbsolutePath());
         try(FileWriter writer = new FileWriter(file)) {
             writer.write("Some String");
         }
         wait(2000);
         file.delete();
         wait(2000);
+        System.out.println("asd");
         assertEquals(file.getName(), map.get("file.created"));
+        //assertEquals(file2.getName(), map.get("file.created"));
         assertEquals(file.getName(), map.get("file.modified"));
         assertEquals(file.getName(), map.get("file.deleted"));
     }
